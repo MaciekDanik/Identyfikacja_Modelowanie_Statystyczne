@@ -17,8 +17,8 @@ class Additive_LCG:
         for i in range (n):
             num_0_1 = self.generate()
 
-            num_in_range = Low_end + num_0_1 * (High_end - Low_end)
-            result.append(num_in_range)
+            num_scaled = Low_end + num_0_1 * (High_end - Low_end)
+            result.append(num_scaled)
         return result
     
     
