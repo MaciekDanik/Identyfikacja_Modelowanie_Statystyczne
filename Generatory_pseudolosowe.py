@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 if __name__ == "__main__":
-    add_lcg = Additive_LCG(123)
+    add_lcg = Additive_LCG(123, 7919, 32003, 82909)
     mult_lcg = Multiplicative_LCG(1)
     gen = Generator(1, 2, 3)
     pm = Park_Miller(123)
