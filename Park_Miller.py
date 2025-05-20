@@ -5,14 +5,17 @@ class Park_Miller:
     # a = 44485709377909  m = 2**48
     # a = 279470273  m = 4294967291
     def __init__(self, seed, a = 16807, m = (2**31 -1)):
-        self.seed = seed
+        if seed is None:
+            self.seed = seed_gen()
+        
+        self.state = seed
         self.a = a
         self.m = m
 
     def generate(self): 
-        self.seed = (self.a * self.seed) % self.m #losuje liczbę z przedziału [1, m-1]
+        self.state = (self.a * self.state) % self.m #losuje liczbę z przedziału [1, m-1]
 
-        return self.seed / self.m #skaluje liczbę do zakresu [0,1)
+        return self.state / self.m #skaluje liczbę do zakresu [0,1)
     
     def generate_n(self, n, Low_end = 0.0, High_end = 1.0):
         result = [0]
@@ -23,3 +26,6 @@ class Park_Miller:
 
             result.append(num_scaled)
         return result
+    
+    def __call__(self):
+        return self.generate()
